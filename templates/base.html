@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrícula - Sistema de Alunos</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}"> 
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="container">
+            <h1>Matrícula</h1>
+            <nav>
+                <a href="{% url 'aluno_criar' %}" class="btn-primary">Novo Cadastro</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container main-content">
+        {% block conteudo %}
+        
+        <h2>Listagem de Alunos</h2>
+        <div class="table-responsive">
+            <table class="tabela-alunos">
+                <thead>
+                    <tr>
+                        <th>Matrícula</th>
+                        <th>Nome</th>
+                        <th>CPF</th>
+                        <th>Curso</th>
+                        <th>Série</th>
+                        <th>Turno</th>
+                        <th>Cidade</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for alunos in alunos%}
+                    <tr>
+                        <td data-label="Matrícula">{{ alunos.matricula }}</td>
+                        <td data-label="Nome">{{ alunos.nome_aluno }}</td>
+                        <td data-label="CPF">{{ alunos.cpf }}</td>
+                        <td data-label="Curso">{{ alunos.curso }}</td>
+                        <td data-label="Série">{{ alunos.serie }}</td>
+                        <td data-label="Turno">{{ alunos.turno }}</td>
+                        <td data-label="Cidade">{{ alunos.cidade }}</td>
+                        <td data-label="Ações" class="acoes">
+                            <a href="{% url 'aluno_detalhes' id=alunos.id %}" class="btn-action edit">Visualizar</a>
+                            <a href="{% url 'aluno_editar' id=alunos.id %}" class="btn-action edit">Editar</a>
+                            <a href="{% url 'aluno_remover' id=alunos.id %}" class="btn-action delete">Remover</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+        {% endblock conteudo %}
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sistema de Matrícula</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+<h2>Detalhes do Aluno</h2>
+<a href="{% url 'aluno_listar' %}" class="btn btn-secondary mb-3">Voltar</a>
+
+<div class="detalhes-aluno">
+    <p><strong>Nome:</strong> {{ alunos.nome_aluno }}</p>
+    <p><strong>CPF:</strong> {{ alunos.cpf }}</p>
+    <p><strong>Data de Nascimento:</strong> {{ alunos.nasc }}</p>
+    <p><strong>Sexo:</strong> {{ alunos.sexo }}</p>
+
+    <p><strong>Email:</strong> {{ alunos.email }}</p>
+    <p><strong>Telefone:</strong> {{ alunos.telefone }}</p>
+
+    <p><strong>Endereço:</strong> {{ alunos.endereco }}</p>
+    <p><strong>Bairro:</strong> {{ alunos.bairro }}</p>
+    <p><strong>Cidade:</strong> {{ alunos.cidade }} - {{ alunos.uf }}</p>
+    <p><strong>CEP:</strong> {{ alunos.cep }}</p>
+
+    <p><strong>Matrícula:</strong> {{ alunos.matricula }}</p>
+    <p><strong>Curso:</strong> {{ alunos.curso }}</p>
+    <p><strong>Série:</strong> {{ alunos.serie }}</p>
+    <p><strong>Turno:</strong> {{ alunos.turno }}</p>
+
+    <p><strong>Observações:</strong> {{ alunos.observacoes|default:"Nenhuma observação." }}</p>
+</div>
+{% endblock conteudo %}

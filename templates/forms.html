@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block conteudo %}
+
+<h2>Formulário de Cadastro de Aluno</h2>
+<a href="{% url 'aluno_listar' %}" class="btn btn-secondary mb-3">Voltar</a>
+
+<form method="POST" class="form-cadastro">
+    {% csrf_token %}
+
+    <!-- Informações Pessoais -->
+    <fieldset class="secao-form">
+        <legend class="secao-titulo">Informações Pessoais</legend>
+        <div class="campos-grupo">
+            <div class="campo-item">
+                {{ form.nome_aluno.label_tag }}
+                {{ form.nome_aluno }}
+            </div>
+            <div class="campo-item campo-terco">
+                {{ form.cpf.label_tag }}
+                {{ form.cpf }}
+            </div>
+            <div class="campo-item campo-terco">
+                {{ form.nasc.label_tag }}
+                {{ form.nasc }}
+            </div>
+            <div class="campo-item campo-terco">
+                {{ form.sexo.label_tag }}
+                {{ form.sexo }}
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- Informações de Contato -->
+    <fieldset class="secao-form">
+        <legend class="secao-titulo">Informações de Contato</legend>
+        <div class="campos-grupo">
+            <div class="campo-item">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="campo-item campo-metade">
+                {{ form.telefone.label_tag }}
+                {{ form.telefone }}
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- Endereço -->
+    <fieldset class="secao-form">
+        <legend class="secao-titulo">Endereço</legend>
+        <div class="campos-grupo">
+            <div class="campo-item">
+                {{ form.endereco.label_tag }}
+                {{ form.endereco }}
+            </div>
+            <div class="campo-item campo-terco-dois">
+                {{ form.cep.label_tag }}
+                {{ form.cep }}
+            </div>
+            <div class="campo-item campo-terco">
+                {{ form.bairro.label_tag }}
+                {{ form.bairro }}
+            </div>
+            <div class="campo-item campo-terco-dois">
+                {{ form.cidade.label_tag }}
+                {{ form.cidade }}
+            </div>
+            <div class="campo-item">
+                {{ form.uf.label_tag }}
+                {{ form.uf }}
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- Informações Acadêmicas -->
+    <fieldset class="secao-form">
+        <legend class="secao-titulo">Informações Acadêmicas</legend>
+        <div class="campos-grupo">
+            <div class="campo-item campo-metade">
+                {{ form.matricula.label_tag }}
+                {{ form.matricula }}
+            </div>
+            <div class="campo-item">
+                {{ form.curso.label_tag }}
+                {{ form.curso }}
+            </div>
+        </div>
+        <div class="campos-grupo">
+            <div class="campo-item">
+                {{ form.serie.label_tag }}
+                {{ form.serie }}
+            </div>
+            <div class="campo-item">
+                {{ form.turno.label_tag }}
+                {{ form.turno }}
+            </div>
+        </div>
+    </fieldset>
+
+    <!-- Observações -->
+    <div class="campo-item">
+        {{ form.observacoes.label_tag }}
+        {{ form.observacoes }}
+    </div>
+
+    <!-- Botões -->
+    <div class="form-actions">
+        <button type="reset" class="btn btn-secondary">Limpar</button>
+        <button type="submit" class="btn btn-primary">Cadastrar Aluno</button>
+    </div>
+</form>
+
+{% endblock conteudo %}

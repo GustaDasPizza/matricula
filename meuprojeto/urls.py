@@ -16,7 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from matricula import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.aluno_listar, name='aluno_listar'),
+    path('novo/', views.aluno_criar, name='aluno_criar'),
+    path('editar/<int:id>/', views.aluno_editar, name='aluno_editar'),
+    path('remover/<int:id>/', views.aluno_remover, name='aluno_remover'),
+    path('detalhes/<int:id>/', views.aluno_detalhes, name='aluno_detalhes'),
 ]
